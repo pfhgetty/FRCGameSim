@@ -1,0 +1,19 @@
+group 'org.usfirst.irs1318'
+version '0.0.1'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+}
