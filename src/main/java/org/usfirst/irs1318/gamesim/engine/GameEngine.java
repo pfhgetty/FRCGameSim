@@ -6,7 +6,7 @@ import org.usfirst.irs1318.gamesim.game.MatchResult;
 /**
  * Set up all objects given a match and run it.
  */
-public class GameEngine {
+public final class GameEngine {
     public MatchResult playMatch(Match match) {
         // TODO
         throw new RuntimeException("TODO");

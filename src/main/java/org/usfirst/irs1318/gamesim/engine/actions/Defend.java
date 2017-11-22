@@ -2,9 +2,15 @@ package org.usfirst.irs1318.gamesim.engine.actions;
 
 import org.usfirst.irs1318.gamesim.engine.Action;
 import org.usfirst.irs1318.gamesim.engine.Actor;
+import org.usfirst.irs1318.gamesim.engine.TaskDetails;
 
-public class Defend extends Action {
-    public Actor defended;
+public final class Defend extends Action {
+    private final Actor defended;
+
+    public Defend(Actor actor, TaskDetails taskDetails, Actor defended) {
+        super(actor, taskDetails);
+        this.defended = defended;
+    }
 
     /**
      * Have the defended delay by the TaskDetail's duration.
@@ -20,5 +26,9 @@ public class Defend extends Action {
     @Override
     public void performFailureAction() {
         // TODO
+    }
+
+    public Actor getDefended() {
+        return defended;
     }
 }

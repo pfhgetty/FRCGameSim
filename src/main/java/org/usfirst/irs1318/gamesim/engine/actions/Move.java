@@ -1,13 +1,16 @@
 package org.usfirst.irs1318.gamesim.engine.actions;
 
-import org.usfirst.irs1318.gamesim.engine.Action;
-import org.usfirst.irs1318.gamesim.engine.Direction;
-import org.usfirst.irs1318.gamesim.engine.Field;
-import org.usfirst.irs1318.gamesim.engine.Location;
+import org.usfirst.irs1318.gamesim.engine.*;
 
-public class Move extends Action {
-    public Field field;
-    public Direction direction;
+public final class Move extends Action {
+    private final Field field;
+    private final Direction direction;
+
+    public Move(Actor actor, TaskDetails taskDetails, Field field, Direction direction) {
+        super(actor, taskDetails);
+        this.field = field;
+        this.direction = direction;
+    }
 
     @Override
     public void performSuccessAction() {
@@ -25,5 +28,13 @@ public class Move extends Action {
     @Override
     public void performFailureAction() {
         // TODO
+    }
+
+    public Field getField() {
+        return field;
+    }
+
+    public Direction getDirection() {
+        return direction;
     }
 }
