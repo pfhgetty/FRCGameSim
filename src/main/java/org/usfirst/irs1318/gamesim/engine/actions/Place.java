@@ -37,7 +37,8 @@ public final class Place extends Action {
     public void performFailureAction() {
         for (int i = 0; i < quantity; i++) {
             Optional<Container> optionalPayloadContainer = actor.getPayloadContainer(payloadType);
-            // TODO
+            optionalPayloadContainer.ifPresent(payloadContainer ->
+                    payloadContainer.retrieveContents().ifPresent(failure::placeContent));
         }
     }
 

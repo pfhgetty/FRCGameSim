@@ -14,14 +14,10 @@ public final class Move extends Action {
 
     @Override
     public void performSuccessAction() {
-        // TODO log
         Location start = actor.getLocation();
         Location destination = field.getDestination(start, direction);
         if (!destination.equals(start)) {
             actor.setLocation(destination);
-
-        } else {
-
         }
     }
 

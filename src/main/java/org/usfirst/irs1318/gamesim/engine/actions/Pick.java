@@ -24,15 +24,16 @@ public final class Pick extends Action {
     @Override
     public void performSuccessAction() {
         for (int i = 0; i < quantity; i++) {
-            Optional<Containable> payload = source.retrieveContents();
-            payload.ifPresent(containable -> actor.addPayload(payloadType, containable));
+            Optional<Containable> optionalPayload = source.retrieveContents();
+            optionalPayload.ifPresent(payload -> actor.addPayload(payloadType, payload));
         }
     }
 
     @Override
     public void performFailureAction() {
         for (int i = 0; i < quantity; i++) {
-            source.retrieveContents().ifPresent(containable -> failure.placeContent(containable));
+            Optional<Containable> optionalPayload = source.retrieveContents();
+            optionalPayload.ifPresent(failure::placeContent);
         }
     }
 
