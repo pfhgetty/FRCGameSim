@@ -2,7 +2,7 @@ package org.usfirst.irs1318.gamesim.engine;
 
 import java.util.Map;
 
-public final class FieldSquare {
+public final class FieldSquare implements Containable {
     private final Location location;
     private Container occupant;
     private Map<String, Target> targets;

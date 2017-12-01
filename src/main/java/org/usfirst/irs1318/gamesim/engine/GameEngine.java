@@ -8,6 +8,7 @@ import org.usfirst.irs1318.gamesim.game.MatchResult;
  */
 public final class GameEngine {
     public MatchResult playMatch(Match match) {
+        EventQueue eventQueue = new EventQueue();
         // TODO
         throw new RuntimeException("TODO");
     }
