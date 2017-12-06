@@ -1,4 +1,4 @@
-package org.usfirst.irs1318.gamesim.engine;
+package org.usfirst.irs1318.gamesim.engine.actors;
 
 import java.util.Objects;
 

@@ -1,10 +1,9 @@
-package org.usfirst.irs1318.gamesim.engine.actions;
+package org.usfirst.irs1318.gamesim.engine.activities;
 
-import org.usfirst.irs1318.gamesim.engine.Action;
-import org.usfirst.irs1318.gamesim.engine.Actor;
-import org.usfirst.irs1318.gamesim.engine.TaskDetails;
+import org.usfirst.irs1318.gamesim.engine.actors.Actor;
+import org.usfirst.irs1318.gamesim.engine.objective.TaskDetails;
 
-public final class Defend extends Action {
+public final class Defend extends Activity {
     private final Actor defended;
 
     public Defend(Actor actor, TaskDetails taskDetails, Actor defended) {
@@ -16,7 +15,7 @@ public final class Defend extends Action {
      * Have the defended delay by the TaskDetail's duration.
      */
     @Override
-    public void performSuccessAction() {
+    public void performSuccessActivity() {
         // TODO
     }
 
@@ -24,7 +23,7 @@ public final class Defend extends Action {
      * Noop
      */
     @Override
-    public void performFailureAction() {
+    public void performFailureActivity() {
         // TODO
     }
 

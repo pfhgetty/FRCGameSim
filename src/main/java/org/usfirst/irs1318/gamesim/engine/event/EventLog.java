@@ -1,4 +1,4 @@
-package org.usfirst.irs1318.gamesim;
+package org.usfirst.irs1318.gamesim.engine.event;
 
 import java.time.Instant;
 import java.util.Collections;

@@ -1,4 +1,6 @@
-package org.usfirst.irs1318.gamesim.engine;
+package org.usfirst.irs1318.gamesim.engine.container;
+
+import org.usfirst.irs1318.gamesim.engine.actors.Location;
 
 public abstract class GamePiece implements Containable {
     protected Location location;

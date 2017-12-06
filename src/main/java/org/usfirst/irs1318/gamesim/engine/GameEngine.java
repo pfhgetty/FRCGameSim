@@ -1,5 +1,6 @@
 package org.usfirst.irs1318.gamesim.engine;
 
+import org.usfirst.irs1318.gamesim.engine.event.EventQueue;
 import org.usfirst.irs1318.gamesim.game.Match;
 import org.usfirst.irs1318.gamesim.game.MatchResult;
 

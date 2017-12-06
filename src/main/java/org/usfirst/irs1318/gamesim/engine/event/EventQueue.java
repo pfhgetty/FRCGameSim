@@ -1,4 +1,4 @@
-package org.usfirst.irs1318.gamesim.engine;
+package org.usfirst.irs1318.gamesim.engine.event;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;

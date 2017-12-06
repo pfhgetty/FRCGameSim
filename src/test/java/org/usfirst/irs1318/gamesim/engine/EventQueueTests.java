@@ -1,6 +1,7 @@
 package org.usfirst.irs1318.gamesim.engine;
 
 import org.junit.Test;
+import org.usfirst.irs1318.gamesim.engine.event.*;
 
 import java.time.Instant;
 
@@ -10,7 +11,7 @@ public class EventQueueTests {
     @Test
     public void testEventComparator() {
         EventQueue eventQueue = new EventQueue();
-        Event e1 = new Event(Instant.ofEpochMilli(100), null);
+        Event e1 = new Event(Instant.ofEpochMilli(10), null);
         Event e2 = new Event(Instant.ofEpochMilli(10000), null);
         Event e3 = new Event(Instant.ofEpochMilli(10000000), null);
         eventQueue.addEvent(e3);

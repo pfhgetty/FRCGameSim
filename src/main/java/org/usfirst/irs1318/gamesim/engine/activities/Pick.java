@@ -1,13 +1,15 @@
-package org.usfirst.irs1318.gamesim.engine.actions;
+package org.usfirst.irs1318.gamesim.engine.activities;
 
-import org.usfirst.irs1318.gamesim.engine.*;
+import org.usfirst.irs1318.gamesim.engine.actors.Actor;
+import org.usfirst.irs1318.gamesim.engine.container.*;
+import org.usfirst.irs1318.gamesim.engine.objective.TaskDetails;
 
 import java.util.Optional;
 
 /**
  * The actor retrieves a containers from the origin container and stores it in its own container.
  */
-public final class Pick extends Action {
+public final class Pick extends Activity {
     private final String payloadType;
     private final Container source;
     private final Container failure;
@@ -22,7 +24,7 @@ public final class Pick extends Action {
     }
 
     @Override
-    public void performSuccessAction() {
+    public void performSuccessActivity() {
         for (int i = 0; i < quantity; i++) {
             Optional<Containable> optionalPayload = source.retrieveContents();
             optionalPayload.ifPresent(payload -> actor.addPayload(payloadType, payload));
@@ -30,7 +32,7 @@ public final class Pick extends Action {
     }
 
     @Override
-    public void performFailureAction() {
+    public void performFailureActivity() {
         for (int i = 0; i < quantity; i++) {
             Optional<Containable> optionalPayload = source.retrieveContents();
             optionalPayload.ifPresent(failure::placeContent);

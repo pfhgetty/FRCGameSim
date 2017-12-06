@@ -1,10 +1,9 @@
-package org.usfirst.irs1318.gamesim.engine.actions;
+package org.usfirst.irs1318.gamesim.engine.activities;
 
-import org.usfirst.irs1318.gamesim.engine.Action;
-import org.usfirst.irs1318.gamesim.engine.Field;
-import org.usfirst.irs1318.gamesim.engine.TaskDetails;
+import org.usfirst.irs1318.gamesim.engine.actors.Field;
+import org.usfirst.irs1318.gamesim.engine.objective.TaskDetails;
 
-public final class ChangePhase extends Action {
+public final class ChangePhase extends Activity {
     private final Field.Phase phase;
 
     public ChangePhase(Field actor, TaskDetails taskDetails, Field.Phase phase) {
@@ -13,13 +12,13 @@ public final class ChangePhase extends Action {
     }
 
     @Override
-    public void performSuccessAction() {
+    public void performSuccessActivity() {
         ((Field) actor).setPhase(phase);
         // TODO
     }
 
     @Override
-    public void performFailureAction() {
+    public void performFailureActivity() {
         // TODO
     }
 

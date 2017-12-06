@@ -1,8 +1,9 @@
-package org.usfirst.irs1318.gamesim.engine.actions;
+package org.usfirst.irs1318.gamesim.engine.activities;
 
-import org.usfirst.irs1318.gamesim.engine.*;
+import org.usfirst.irs1318.gamesim.engine.actors.*;
+import org.usfirst.irs1318.gamesim.engine.objective.TaskDetails;
 
-public final class Move extends Action {
+public final class Move extends Activity {
     private final Field field;
     private final Direction direction;
 
@@ -13,7 +14,7 @@ public final class Move extends Action {
     }
 
     @Override
-    public void performSuccessAction() {
+    public void performSuccessActivity() {
         Location start = actor.getLocation();
         Location destination = field.getDestination(start, direction);
         if (!destination.equals(start)) {
@@ -22,7 +23,7 @@ public final class Move extends Action {
     }
 
     @Override
-    public void performFailureAction() {
+    public void performFailureActivity() {
         // TODO
     }
 
