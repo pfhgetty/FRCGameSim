@@ -1,0 +1,23 @@
+group 'org.usfirst.irs1318'
+version '0.0.1'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    compile 'com.google.inject:guice:4.1.0'
+    compile 'com.github.brianegan.bansa:bansa:1.0.0-beta'
+    testCompile 'junit:junit:4.12'
+}
