@@ -3,5 +3,8 @@
 *.xml
 *.yml
 *.iml
-.gradle
 
+# Gradle Files
+
+.gradle
+build
