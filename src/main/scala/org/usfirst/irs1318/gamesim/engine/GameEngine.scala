@@ -14,10 +14,10 @@ case class GameEngine(implicit interpreter: GameEngine.Interpreter) {
 
 object GameEngine {
   case class State(time: Instant,
-                             field: Field,
-                             eventQueue: EventQueue,
-                             dependencyManager: DependencyManager,
-                             eventLog: EventLog)
+                   field: Field,
+                   eventQueue: EventQueue,
+                   dependencyManager: DependencyManager,
+                   eventLog: EventLog)
 
   type Interpreter = org.usfirst.irs1318.gamesim.interpret.Interpreter[Action, GameEngine.State]
 }
