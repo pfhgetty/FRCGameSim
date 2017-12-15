@@ -9,8 +9,11 @@ case class Field(width: Int,
                  containers: Map[String, Containable]) extends Actor
 
 object Field {
-  class Phase
-  object Phase extends Enumeration {
-    val PRE, AUTO, TELEOP, POST = Value
+  sealed case class Phase(name: String)
+  object Phase {
+    val PRE = Phase("pre")
+    val AUTO = Phase("auto")
+    val TELEOP = Phase("teleop")
+    val POST = Phase("post")
   }
 }

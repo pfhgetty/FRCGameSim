@@ -1,8 +1,6 @@
 package org.usfirst.irs1318.gamesim.engine.objective
 
-import java.time.Duration
-
-case class TaskDetails(taskDuration: Duration,
-                       reactionDuration: Duration,
+case class TaskDetails(taskDuration: Long,
+                       reactionDuration: Long,
                        reliability: Float,
                        task: Task)
