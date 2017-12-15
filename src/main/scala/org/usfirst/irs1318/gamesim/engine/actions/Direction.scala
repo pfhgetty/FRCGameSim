@@ -1,6 +1,9 @@
 package org.usfirst.irs1318.gamesim.engine.actions
 
-class Direction
-object Direction extends Enumeration {
-  val UP, DOWN, LEFT, RIGHT = Value
+case class Direction(name: String)
+object Direction {
+  val LEFT = Direction("left")
+  val RIGHT = Direction("right")
+  val UP = Direction("up")
+  val DOWN = Direction("down")
 }

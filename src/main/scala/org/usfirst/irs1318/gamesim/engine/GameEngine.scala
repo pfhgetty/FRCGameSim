@@ -47,7 +47,7 @@ object GameEngine {
       0,
       Field(0, 0, Field.Phase.PRE, Location(0, 0), Map.empty),
       EventQueue(),
-      new DependencyManager(),
+      DependencyManager(),
       EventLog.empty
     )
   }

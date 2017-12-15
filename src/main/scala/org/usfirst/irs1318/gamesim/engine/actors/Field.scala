@@ -9,7 +9,7 @@ case class Field(width: Int,
                  containers: Map[String, Containable]) extends Actor
 
 object Field {
-  sealed case class Phase(name: String)
+  case class Phase(name: String)
   object Phase {
     val PRE = Phase("pre")
     val AUTO = Phase("auto")
