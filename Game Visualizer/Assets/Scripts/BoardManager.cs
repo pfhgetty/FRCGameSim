@@ -13,7 +13,7 @@ public class BoardManager : MonoBehaviour
 
     [Header("Prefabs")]
     [SerializeField] private GameObject tilePrefab;
-    [SerializeField] private Robot robotPrefab;
+    [SerializeField] private GameObject robotPrefab;
     private Tile[,] board;
    
     // Use this for initialization
@@ -49,12 +49,21 @@ public class BoardManager : MonoBehaviour
 
     public static Tile GetTile(int x, int y)
     {
-        return I.board[x, y];
+        Tile[,] board = I.board;
+        if (x < board.GetLength(0) && y < board.GetLength(1))
+        {
+            return I.board[x, y];
+        }
+        else
+        {
+            Debug.LogError("Tile Out of Bounds");
+            return null;
+        }
     }
 
     public static Robot AddRobot(RobotID id, int x, int y)
     {
-        Robot robot = Instantiate(I.robotPrefab, BoardManager.GetTile(x, y).transform);
+        Robot robot = Instantiate(I.robotPrefab, BoardManager.GetTile(x, y).transform).GetComponent<Robot>();
         robot.SetRobotID(id);
         return robot;
     }

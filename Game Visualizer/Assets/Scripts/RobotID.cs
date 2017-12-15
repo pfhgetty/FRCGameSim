@@ -11,9 +11,9 @@ public struct RobotID
     }
 
     public enum Alliance { RED, BLUE, GREEN };
-    public Alliance alliance;
-    public int teamNumber;
-    public int botNumber;
+    public Alliance alliance { get; private set; }
+    public int teamNumber { get; private set; }
+    public int botNumber { get; private set; }
 
 
 }

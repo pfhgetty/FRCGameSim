@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TextDisplay : MonoBehaviour {
-    [SerializeField] private Text text;
+    private Text text;
 
     private void Awake()
     {
-        this.transform.parent = 
+        this.text = GetComponent<Text>();
+        this.text.rectTransform.SetParent(LabelManager.I.transform);
     }
 
     public void SetPosition(Vector3 position)

@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4413988746520460}
   - component: {fileID: 114693679194907632}
-  - component: {fileID: 114910028346933720}
   m_Layer: 0
   m_Name: TileBoard
   m_TagString: Untagged
@@ -34,8 +33,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1002077866368618}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,20 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab21ad0220686e04b88e722ecd83fb2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BOARD_WIDTH: 12
-  BOARD_HEIGHT: 12
+  BOARD_WIDTH: 100
+  BOARD_HEIGHT: 100
   TILE_SIZE: 1
   tilePrefab: {fileID: 1021933574477116, guid: 5d7161d0318e0d543b37a00694665262, type: 2}
-  robotPrefab: {fileID: 114754361226213080, guid: fb9f09bc3ad42f34d80a31376a552974,
+  robotPrefab: {fileID: 1811843976665586, guid: fb9f09bc3ad42f34d80a31376a552974,
     type: 2}
---- !u!114 &114910028346933720
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1002077866368618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b53621225102a7342a9cf41eaee718dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
