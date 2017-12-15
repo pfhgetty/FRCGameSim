@@ -26,9 +26,9 @@ public class Alliance {
 	
 	public static class Builder {
 		
-		private Team team1 = new Team();
-		private Team team2 = new Team();
-		private Team team3 = new Team();
+		private Team team1 = new Team.Builder().build();
+		private Team team2 = new Team.Builder().build();
+		private Team team3 = new Team.Builder().build();
 		
 		public Builder() {
 			

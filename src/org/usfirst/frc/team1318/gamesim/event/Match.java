@@ -20,8 +20,8 @@ public class Match {
 	
 	public static class Builder {
 		
-		private Alliance blueAlliance = new Alliance();
-		private Alliance redAlliance = new Alliance();
+		private Alliance blueAlliance = new Alliance.Builder().build();
+		private Alliance redAlliance = new Alliance.Builder().build();
 		
 		public Builder() {
 			
