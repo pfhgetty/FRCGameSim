@@ -3,6 +3,7 @@
 *.xml
 *.yml
 *.iml
+/out
 
 # Gradle Files
 [Ll]ibrary/
