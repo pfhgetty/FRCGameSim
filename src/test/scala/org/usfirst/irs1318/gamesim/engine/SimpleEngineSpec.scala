@@ -1,6 +1,9 @@
 package org.usfirst.irs1318.gamesim.engine
 
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import org.scalatest.{FlatSpec, Matchers}
+import org.usfirst.irs1318.gamesim.UnitSpec
 import org.usfirst.irs1318.gamesim.engine.actions.Action
 import org.usfirst.irs1318.gamesim.engine.actors.Field
 import org.usfirst.irs1318.gamesim.engine.event.{Event, EventLog}
@@ -8,7 +11,7 @@ import org.usfirst.irs1318.gamesim.engine.interpret.DefaultGameEngineInterpreter
 import org.usfirst.irs1318.gamesim.engine.objective.TaskDetails
 
 //noinspection ZeroIndexToHead
-class SimpleEngineSpec extends FlatSpec with Matchers {
+class SimpleEngineSpec extends UnitSpec {
   "The game engine" should "step through phases and log events" in {
     val gameEngine = GameEngine(DefaultGameEngineInterpreter.instance)
 
