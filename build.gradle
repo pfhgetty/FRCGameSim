@@ -5,11 +5,18 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.com.github.maiflai:gradle-scalatest:0.18"
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'scala'
+apply plugin: 'com.github.maiflai.scalatest'
 
 repositories {
     mavenCentral()
@@ -19,6 +26,10 @@ repositories {
 
 dependencies {
     compile 'com.google.inject:guice:4.1.0'
-    compile group: 'org.typelevel', name: 'cats-core_2.12', version: '1.0.0-RC1'
+    compile 'org.typelevel:cats-core_2.12:1.0.0-RC1'
+    testCompile 'org.scalatest:scalatest_2.12:3.0.4'
     testCompile 'junit:junit:4.12'
+    testRuntime 'org.pegdown:pegdown:1.4.2'
 }
+
+test.dependsOn scalatest

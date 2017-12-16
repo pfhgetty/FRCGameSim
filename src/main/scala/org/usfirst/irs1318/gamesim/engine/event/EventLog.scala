@@ -11,5 +11,17 @@ case class EventLog(entries: List[EventLog.Entry]) {
 object EventLog {
   def empty: EventLog = EventLog(List.empty)
 
-  case class Entry(content: Map[String, String])
+  case class Entry(content: Map[String, String]) {
+    @inline def mapContent(fn: Map[String, String] => Map[String, String]): Entry = copy(content = fn(content))
+  }
+
+  object Entry {
+    case class Builder(entry: Entry) {
+      def this() = this(Entry(Map.empty))
+      @inline def mapEntry(fn: Entry => Entry): Builder = copy(entry = fn(entry))
+      def setContent(content: Map[String, String]): Builder = mapEntry(_.mapContent(_ => content))
+      def putContent(name: String, value: String): Builder = mapEntry(_.mapContent(_ + ((name, value))))
+      def build: Entry = entry
+    }
+  }
 }

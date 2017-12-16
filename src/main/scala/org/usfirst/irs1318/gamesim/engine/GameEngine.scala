@@ -9,7 +9,7 @@ import org.usfirst.irs1318.gamesim.game.{Match, MatchResult}
 
 import scala.annotation.tailrec
 
-class GameEngine(val interpreter: GameEngine.Interpreter) {
+case class GameEngine(interpreter: GameEngine.Interpreter) {
   def playMatch(`match`: Match): MatchResult = ???
 
   @tailrec final def simulateState(state: GameEngine.State): GameEngine.State = {
@@ -43,16 +43,19 @@ object GameEngine {
   }
 
   object State {
-    def empty: State = State(
-      0,
-      Field(0, 0, Field.Phase.PRE, Location(0, 0), Map.empty),
-      EventQueue(),
-      DependencyManager(),
-      EventLog.empty
-    )
+    case class Builder(state: State) {
+      def this() = this(State(0, new Field.Builder().build, EventQueue(), DependencyManager(), EventLog.empty))
+      @inline def mapState(fn: State => State): Builder = copy(state = fn(state))
+      def setTime(time: Long): Builder = mapState(_.mapTime(_ => time))
+      def setField(field: Field): Builder = mapState(_.mapField(_ => field))
+      def setEventQueue(eventQueue: EventQueue): Builder = mapState(_.mapEventQueue(_ => eventQueue))
+      def setDependencyManager(dependencyManager: DependencyManager): Builder = mapState(_.mapDependencyManager(_ => dependencyManager))
+      def setEventLog(eventLog: EventLog): Builder = mapState(_.mapEventLog(_ => eventLog))
+      def addEvent(event: Event): Builder = mapState(_.mapEventQueue(_ + event))
+      def addLogEntry(entry: EventLog.Entry): Builder = mapState(_.mapEventLog(_ + entry))
+      def build: State = state
+    }
   }
-
-  def instance: GameEngine = new GameEngine(DefaultGameEngineInterpreter.instance)
 
   type Interpreter = org.usfirst.irs1318.gamesim.interpret.Interpreter[Action, GameEngine.State]
 }
