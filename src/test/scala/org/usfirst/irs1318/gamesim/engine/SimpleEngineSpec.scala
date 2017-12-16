@@ -24,23 +24,23 @@ class SimpleEngineSpec extends FlatSpec with Matchers {
 
     val newState = gameEngine.simulateState(state)
 
-    newState.time should be (200)
+    newState.time shouldEqual 200
 
-    newState.eventLog.entries(0) should be
+    newState.eventLog.entries(0) shouldEqual
       new EventLog.Entry.Builder()
         .putContent("action", "ChangePhase")
         .putContent("phase", "auto")
         .putContent("time", "0")
         .build
 
-    newState.eventLog.entries(1) should be
+    newState.eventLog.entries(1) shouldEqual
       new EventLog.Entry.Builder()
         .putContent("action", "ChangePhase")
         .putContent("phase", "teleop")
         .putContent("time", "15")
         .build
 
-    newState.eventLog.entries(2) should be
+    newState.eventLog.entries(2) shouldEqual
       new EventLog.Entry.Builder()
         .putContent("action", "ChangePhase")
         .putContent("phase", "post")
