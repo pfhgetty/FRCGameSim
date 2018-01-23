@@ -7,7 +7,7 @@ case class TaskDetails(taskDuration: Long,
 
 object TaskDetails {
   case class Builder(taskDetails: TaskDetails) {
-    def this(name: String) = this(TaskDetails(0, 0, 1.0f, new Task.Builder(name).build))
+    def this() = this(TaskDetails(0, 0, 1.0f, new Task.Builder().build))
     @inline def mapTaskDetails(fn: TaskDetails => TaskDetails): Builder = copy(taskDetails = fn(taskDetails))
     def setTaskDuration(taskDuration: Long): Builder = mapTaskDetails(_.copy(taskDuration = taskDuration))
     def setReactionDuration(reactionDuration: Long): Builder = mapTaskDetails(_.copy(reactionDuration = reactionDuration))

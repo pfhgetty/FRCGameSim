@@ -1,6 +1,6 @@
 package org.usfirst.irs1318.gamesim.engine.event
 
-import org.usfirst.irs1318.gamesim.engine.actions.Action
+import org.usfirst.irs1318.gamesim.engine.action.Action
 
 case class Event(time: Long, action: Action)
 

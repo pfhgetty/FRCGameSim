@@ -1,23 +1,19 @@
 package org.usfirst.irs1318.gamesim.engine
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import org.scalatest.{FlatSpec, Matchers}
 import org.usfirst.irs1318.gamesim.UnitSpec
-import org.usfirst.irs1318.gamesim.engine.actions.Action
+import org.usfirst.irs1318.gamesim.engine.action.ChangePhase
 import org.usfirst.irs1318.gamesim.engine.actors.Field
 import org.usfirst.irs1318.gamesim.engine.event.{Event, EventLog}
-import org.usfirst.irs1318.gamesim.engine.interpret.DefaultGameEngineInterpreter
 import org.usfirst.irs1318.gamesim.engine.objective.TaskDetails
 
 //noinspection ZeroIndexToHead
 class SimpleEngineSpec extends UnitSpec {
   "The game engine" should "step through phases and log events" in {
-    val gameEngine = GameEngine(DefaultGameEngineInterpreter.instance)
+    val gameEngine = new GameEngine()
 
-    val switchToAuto = Event(0, Action.ChangePhase(Field.Phase.AUTO, new TaskDetails.Builder("switchToAuto").build))
-    val switchToTeleop = Event(15, Action.ChangePhase(Field.Phase.TELEOP, new TaskDetails.Builder("switchToTeleop").build))
-    val switchToPost = Event(200, Action.ChangePhase(Field.Phase.POST, new TaskDetails.Builder("switchToPost").build))
+    val switchToAuto = Event(0, ChangePhase(Field.Phase.Auto, new TaskDetails.Builder().build))
+    val switchToTeleop = Event(15, ChangePhase(Field.Phase.Teleop, new TaskDetails.Builder().build))
+    val switchToPost = Event(200, ChangePhase(Field.Phase.Post, new TaskDetails.Builder().build))
 
     val state = new GameEngine.State.Builder()
       .addEvent(switchToAuto)

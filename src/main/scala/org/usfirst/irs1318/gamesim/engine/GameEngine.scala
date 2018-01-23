@@ -1,15 +1,13 @@
 package org.usfirst.irs1318.gamesim.engine
 
-import org.usfirst.irs1318.gamesim.engine.actions.Action
-import org.usfirst.irs1318.gamesim.engine.actors.{Field, Location}
+import org.usfirst.irs1318.gamesim.engine.actors.Field
 import org.usfirst.irs1318.gamesim.engine.event.{Event, EventLog, EventQueue}
-import org.usfirst.irs1318.gamesim.engine.interpret.DefaultGameEngineInterpreter
 import org.usfirst.irs1318.gamesim.engine.objective.DependencyManager
 import org.usfirst.irs1318.gamesim.game.{Match, MatchResult}
 
 import scala.annotation.tailrec
 
-case class GameEngine(interpreter: GameEngine.Interpreter) {
+class GameEngine {
   def playMatch(`match`: Match): MatchResult = ???
 
   @tailrec final def simulateState(state: GameEngine.State): GameEngine.State = {
@@ -26,7 +24,7 @@ case class GameEngine(interpreter: GameEngine.Interpreter) {
   }
 
   def simulateEvent(event: Event, state: GameEngine.State): GameEngine.State =
-    interpreter.run(event.action, state.mapTime(_ => event.time))
+    event.action.run(state.mapTime(_ => event.time))
 }
 
 object GameEngine {
@@ -56,6 +54,4 @@ object GameEngine {
       def build: State = state
     }
   }
-
-  type Interpreter = org.usfirst.irs1318.gamesim.interpret.Interpreter[Action, GameEngine.State]
 }
