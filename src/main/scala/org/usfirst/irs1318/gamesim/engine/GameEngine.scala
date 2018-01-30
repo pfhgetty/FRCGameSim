@@ -1,7 +1,7 @@
 package org.usfirst.irs1318.gamesim.engine
 
 import org.usfirst.irs1318.gamesim.engine.actors.Field
-import org.usfirst.irs1318.gamesim.engine.event.{Event, EventLog, EventQueue}
+import org.usfirst.irs1318.gamesim.engine.event.{Event, EventQueue}
 import org.usfirst.irs1318.gamesim.engine.objective.DependencyManager
 import org.usfirst.irs1318.gamesim.game.{Match, MatchResult}
 
@@ -24,10 +24,14 @@ class GameEngine {
   }
 
   def simulateEvent(event: Event, state: GameEngine.State): GameEngine.State =
-    event.action.run(state.mapTime(_ => event.time))
+    event.action.run(state
+      .mapTime(_ => event.time)
+      .mapEventLog(_ :+ event))
 }
 
 object GameEngine {
+  type EventLog = List[Event]
+
   case class State(time: Long,
                    field: Field,
                    eventQueue: EventQueue,
@@ -42,7 +46,7 @@ object GameEngine {
 
   object State {
     case class Builder(state: State) {
-      def this() = this(State(0, new Field.Builder().build, EventQueue(), DependencyManager(), EventLog.empty))
+      def this() = this(State(0, new Field.Builder().build, EventQueue(), DependencyManager(), List.empty))
       @inline def mapState(fn: State => State): Builder = copy(state = fn(state))
       def setTime(time: Long): Builder = mapState(_.mapTime(_ => time))
       def setField(field: Field): Builder = mapState(_.mapField(_ => field))
@@ -50,7 +54,7 @@ object GameEngine {
       def setDependencyManager(dependencyManager: DependencyManager): Builder = mapState(_.mapDependencyManager(_ => dependencyManager))
       def setEventLog(eventLog: EventLog): Builder = mapState(_.mapEventLog(_ => eventLog))
       def addEvent(event: Event): Builder = mapState(_.mapEventQueue(_ + event))
-      def addLogEntry(entry: EventLog.Entry): Builder = mapState(_.mapEventLog(_ + entry))
+      def addLogEntry(entry: Event): Builder = mapState(_.mapEventLog(_ :+ entry))
       def build: State = state
     }
   }
