@@ -14,15 +14,13 @@ object Field {
   type Content = Actor
   type Contents = Map[String, Content]
 
-  sealed abstract case class Phase(string: String) {
-    override def toString: String = string
-  }
+  sealed abstract class Phase
 
   object Phase {
-    object Pre extends Phase("pre")
-    object Auto extends Phase("auto")
-    object Teleop extends Phase("teleop")
-    object Post extends Phase("post")
+    case object Pre extends Phase
+    case object Auto extends Phase
+    case object Teleop extends Phase
+    case object Post extends Phase
   }
 
   case class Builder(field: Field) {
