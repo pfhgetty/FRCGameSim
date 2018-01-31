@@ -5,7 +5,8 @@ import org.usfirst.irs1318.gamesim.engine.actors.Field.Contents
 case class Field(width: Int,
                  height: Int,
                  phase: Field.Phase,
-                 contents: Contents) {
+                 contents: Contents) extends Actor {
+  override def name: String = "Field"
   @inline def mapPhase(fn: Field.Phase => Field.Phase): Field = copy(phase = fn(phase))
   @inline def mapContents(fn: Contents => Contents): Field = copy(contents = fn(contents))
 }
