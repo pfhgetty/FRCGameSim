@@ -7,7 +7,7 @@ import org.usfirst.irs1318.gamesim.engine.event.Event
 import org.usfirst.irs1318.gamesim.engine.objective.TaskDetails
 
 //noinspection ZeroIndexToHead
-class SimpleEngineSpec extends UnitSpec {
+class ChangePhaseEngineSpec extends UnitSpec {
   "The game engine" should "step through phases and log events" in {
     val gameEngine = GameEngine()
 
