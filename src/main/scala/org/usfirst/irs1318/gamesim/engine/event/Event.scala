@@ -6,6 +6,6 @@ case class Event(time: Long, action: Action)
 
 object Event {
   implicit object EventOrdering extends Ordering[Event] {
-    override def compare(x: Event, y: Event): Int = x.time.compareTo(y.time)
+    override def compare(x: Event, y: Event): Int = x.time compareTo y.time
   }
 }
