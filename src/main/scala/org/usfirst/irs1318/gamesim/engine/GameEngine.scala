@@ -33,7 +33,6 @@ case class GameEngine() {
 
 object GameEngine {
   type EventLog = List[Event]
-  type Actors = Map[String, Actor]
 
   case class State(time: Time,
                    actors: Actors,
@@ -48,7 +47,8 @@ object GameEngine {
     @inline def mapDependencyManager(fn: DependencyManager => DependencyManager): State = copy(dependencyManager = fn(dependencyManager))
     @inline def mapEventLog(fn: EventLog => EventLog): State = copy(eventLog = fn(eventLog))
 
-    def mapActor(name: String, fn: Actor => Actor): State = mapActors(_ + ((name, fn(actors(name)))))
+    def mapActor(name: String, fn: Actor => Actor): State = mapActors(_.map(name, fn))
+    def mapActor(location: Location, fn: Actor => Actor): State = mapActors(_.map(location, fn))
   }
 
   object State {
@@ -62,14 +62,14 @@ object GameEngine {
     }
 
     case class Builder(state: State) {
-      def this() = this(State(Time(0), Map.empty, Phase.Pre, EventQueue(), DependencyManager(), List.empty))
+      def this() = this(State(Time(0), Actors(), Phase.Pre, EventQueue(), DependencyManager(), List.empty))
       @inline def mapState(fn: State => State): Builder = copy(state = fn(state))
       def setTime(time: Time): Builder = mapState(_.mapTime(_ => time))
       def setActors(actors: Actors): Builder = mapState(_.mapActors(_ => actors))
       def setEventQueue(eventQueue: EventQueue): Builder = mapState(_.mapEventQueue(_ => eventQueue))
       def setDependencyManager(dependencyManager: DependencyManager): Builder = mapState(_.mapDependencyManager(_ => dependencyManager))
       def setEventLog(eventLog: EventLog): Builder = mapState(_.mapEventLog(_ => eventLog))
-      def addActor(actor: Actor): Builder = mapState(_.mapActors(_ + ((actor.name, actor))))
+      def addActor(actor: Actor): Builder = mapState(_.mapActors(_.add(actor)))
       def addEvent(event: Event): Builder = mapState(_.mapEventQueue(_ + event))
       def addLogEntry(entry: Event): Builder = mapState(_.mapEventLog(_ :+ entry))
       def build: State = state
