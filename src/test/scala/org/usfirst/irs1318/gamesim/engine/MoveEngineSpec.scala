@@ -5,6 +5,7 @@ import org.usfirst.irs1318.gamesim.engine.action.Move
 import org.usfirst.irs1318.gamesim.engine.actors.Direction._
 import org.usfirst.irs1318.gamesim.engine.actors._
 import org.usfirst.irs1318.gamesim.engine.event.Event
+import org.usfirst.irs1318.gamesim.engine.time.Time
 
 class MoveEngineSpec extends UnitSpec {
   List(Left, Right, Up, Down).foreach { direction =>
@@ -12,7 +13,7 @@ class MoveEngineSpec extends UnitSpec {
       val gameEngine = GameEngine()
 
       val state = new GameEngine.State.Builder()
-        .addEvent(Event(0, Move("robot", direction)))
+        .addEvent(Event(Time(0), Move("robot", direction)))
         .addActor(Robot("robot", Location(0, 0), Map.empty))
         .build
 

@@ -4,6 +4,7 @@ import org.usfirst.irs1318.gamesim.engine.GameEngine.State.Phase
 import org.usfirst.irs1318.gamesim.engine.actors._
 import org.usfirst.irs1318.gamesim.engine.event._
 import org.usfirst.irs1318.gamesim.engine.objective.DependencyManager
+import org.usfirst.irs1318.gamesim.engine.time.Time
 import org.usfirst.irs1318.gamesim.game._
 
 import scala.annotation.tailrec
@@ -34,13 +35,13 @@ object GameEngine {
   type EventLog = List[Event]
   type Actors = Map[String, Actor]
 
-  case class State(time: Long,
+  case class State(time: Time,
                    actors: Actors,
                    phase: Phase,
                    eventQueue: EventQueue,
                    dependencyManager: DependencyManager,
                    eventLog: EventLog) {
-    @inline def mapTime(fn: Long => Long): State = copy(time = fn(time))
+    @inline def mapTime(fn: Time => Time): State = copy(time = fn(time))
     @inline def mapActors(fn: Actors => Actors): State = copy(actors = fn(actors))
     @inline def mapPhase(fn: Phase => Phase): State = copy(phase = fn(phase))
     @inline def mapEventQueue(fn: EventQueue => EventQueue): State = copy(eventQueue = fn(eventQueue))
@@ -61,9 +62,9 @@ object GameEngine {
     }
 
     case class Builder(state: State) {
-      def this() = this(State(0, Map.empty, Phase.Pre, EventQueue(), DependencyManager(), List.empty))
+      def this() = this(State(Time(0), Map.empty, Phase.Pre, EventQueue(), DependencyManager(), List.empty))
       @inline def mapState(fn: State => State): Builder = copy(state = fn(state))
-      def setTime(time: Long): Builder = mapState(_.mapTime(_ => time))
+      def setTime(time: Time): Builder = mapState(_.mapTime(_ => time))
       def setActors(actors: Actors): Builder = mapState(_.mapActors(_ => actors))
       def setEventQueue(eventQueue: EventQueue): Builder = mapState(_.mapEventQueue(_ => eventQueue))
       def setDependencyManager(dependencyManager: DependencyManager): Builder = mapState(_.mapDependencyManager(_ => dependencyManager))

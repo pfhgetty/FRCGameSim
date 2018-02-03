@@ -1,6 +1,5 @@
 package org.usfirst.irs1318.gamesim.engine.objective
 
-// TODO
-case class DependencyManager() {
+case class DependencyManager(dependencies: Set[Dependency] = Set()) {
 
 }
