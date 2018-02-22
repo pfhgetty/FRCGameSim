@@ -1,0 +1,10 @@
+// Format is space-delimited file
+// Fields are in this order:
+// StartTime EndTime Actor Action ActionDetails
+// Times are in seconds
+// Parsing errors will simply log error & skip that line
+ 
+0 1 b1 move 0,0 0,0
+1 5 b1 move 0,0 5,5
+5 7 b1 move 5,5 5,6
+7 8 b1 move 5,6 5,6

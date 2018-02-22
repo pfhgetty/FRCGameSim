@@ -6,7 +6,9 @@ public class Move : Action
 {
     private float duration;
     private GridCoord startPosition, endPosition;
-    public Move(GridCoord startPosition, GridCoord endPosition, float startTime, float endTime) : base(startTime, endTime)
+
+    public Move(GridCoord startPosition, GridCoord endPosition, float startTime, 
+        float endTime, Actor actor) : base(startTime, endTime, actor)
     {
         this.duration = endTime - startTime;
         this.startPosition = startPosition;
